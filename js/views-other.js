@@ -3,7 +3,7 @@
    Protocols, Archive, Stories, Toolkit, Settings
    ============================================================ */
 
-import { $, el, DB, toAR, arDate, timeAgo, toast, haptic, openModal, closeModal, escapeHTML, trunc,
+import { $, el, DB, toAR, arDate, toast, haptic, openModal, closeModal, escapeHTML, trunc,
          router, state, isPremium } from './core.js';
 import { protocols, getProtocol } from './data-protocols.js';
 import { wisdom } from './data-wisdom.js';
@@ -150,9 +150,7 @@ const buildArchiveCard = (item) => {
     onclick: () => openArchiveItem(item)
   },
     el('div', { class: 'archive-item-date' },
-      el('span', { class: 'archive-item-type' }, typeLabel),
-      el('span', { class: 'archive-item-sep' }, '·'),
-      el('span', {}, timeAgo(item.timestamp))
+      el('span', { class: 'archive-item-type' }, typeLabel)
     ),
     el('div', { class: 'archive-item-preview' },
       trunc(item.text || item.summary?.theme || 'جلسة', 130)
@@ -236,9 +234,7 @@ export const renderStories = () => {
       el('div', { class: 'story-quote-mark' }, '"'),
       el('div', { class: 'story-text' }, s.text),
       el('div', { class: 'story-meta' },
-        el('span', {}, 'مجهولة الهوية'),
-        el('span', { class: 'story-meta-sep' }, '·'),
-        el('span', {}, `قبل ${toAR(s.days)} يوم`)
+        el('span', {}, 'مجهولة الهوية')
       )
     ));
   });
