@@ -1,8 +1,18 @@
-# ROADMAP · خارطة الطريق
+# Roadmap
 
-Where ARAGID goes next, and why.
+Where ARAGID goes next, and why. For what the project does today, see the [README](README.md).
 
-ARAGID today is a static, offline-first PWA with no backend. That was the right starting constraint — it forced privacy to be architectural rather than promised. The roadmap below extends that premise rather than abandoning it: **every item must hold the line that a user's most vulnerable entries never leave their device.**
+ARAGID is currently a static, offline-first PWA with no backend. That was the right starting constraint — it forced privacy to be architectural rather than merely promised. The roadmap below extends that premise rather than abandoning it: **every item must hold the line that a user's most vulnerable entries never leave their device.**
+
+## Contents
+
+1. [Apple ecosystem direction](#1-apple-ecosystem-direction)
+2. [A native Swift / iOS version](#2-a-native-swift--ios-version)
+3. [Privacy-first local storage](#3-privacy-first-local-storage)
+4. [Better mood insights](#4-better-mood-insights)
+5. [Accessibility](#5-accessibility)
+6. [Arabic-first UX](#6-arabic-first-ux)
+7. [Honest limitations](#honest-limitations)
 
 ---
 
