@@ -1,162 +1,157 @@
-# أراغيد · ARAGID v2.0
+# ARAGID · أراغيد
 
+> **A daily emotional-reset companion — for the moments that go unspoken.**
 > نظام إعادة ضبط عاطفي يومي — للحظات لا تُقال.
-> An Arabic-first, feminine, premium mental wellness PWA.
+
+An Arabic-first, privacy-first mental wellness **Progressive Web App**. No backend, no accounts, no analytics — every entry stays on the user's device.
 
 ---
 
-## ما الذي تغيّر في v2
+## The problem
 
-تَحَوَّل أراغيد من **يوميات رقمية** إلى **منتج اشتراك مكتمل** بقيمة قابلة للقياس.
+Arabic speakers seeking mental wellness tools face three compounding gaps:
 
-### الميزات الجديدة الكُبرى
+1. **Language.** Most wellness apps are English-first. Arabic support, when it exists, is a right-to-left retrofit — translated strings bolted onto a layout that was never designed for them. The result reads as foreign at exactly the moment a user needs it to feel like home.
+2. **Privacy.** Journaling your hardest moments into someone else's cloud is a real deterrent. The most vulnerable entries are the ones least likely to be written if a server is involved.
+3. **The gap between feeling and action.** In an acute moment — a panic spike, a 2 a.m. spiral — a blank journal box is the wrong interface. What helps is a short, structured, timed protocol.
 
-| # | الميزة | الوصف |
-|---|--------|------|
-| 1 | **نظام Mood (٨ مشاعر)** | تَسجيل قبل/بعد كل جلسة → قياس فعلي للأثر |
-| 2 | **Rescue Hub (٣ مستويات)** | ٣٠ث / ٩٠ث / ٧د — اختاري حسب الحاجة |
-| 3 | **محرّك الرؤى الذكية** | يَكتَشِف ٦ أنماط: ليلي، تَكرار موضوع، تَحسُّن، زَخَم، انخفاض، أسبوع أول |
-| 4 | **التقرير الأسبوعي** | إحصاءات + سرد + بطاقة قابلة للمشاركة |
-| 5 | **إعادة الضَّبط الشهري** ✦ | طقس مكتوب لإغلاق شهر وفَتح آخر (مميَّز) |
-| 6 | **Share Cards** | تَصدير PNG لـ Instagram Story (١٠٨٠×١٩٢٠) |
-| 7 | **ندى v2 — Context-aware** | تَفهَم نَبرة الرسالة، تَقترح حسب الحالة |
-| 8 | **كَشف الأزمات** | تَتعَرَّف على لُغة الخطر → رقم خط الدعم ٩٢٠٠٣٣٣٦٠ |
-| 9 | **Pricing Page** | ٣ خطط: شهري ٢٩ / سنوي ٢٤٠ / مدى الحياة ٧٤٩ ر.س |
-| 10 | **Paywall ذكي** | يَفتَح عند حدود الطبقة المجانية |
-| 11 | **Focus Mode** | يَخفي كل عناصر الواجهة أثناء الكتابة |
-| 12 | **Garden Milestones** | ١ / ٣ / ٧ / ١٤ / ٢١ / ٥٠ / ١٠٠ زهرة — كل واحدة قصّة |
-| 13 | **Smart Suggestions** | لما المزاج مُنخَفِض، يَقترح بروتوكول مُحَدَّد |
-| 14 | **Schema Migrations** | نظام مُتَكامِل للتطوير المستقبلي |
-
-### الطبقة المجانية vs أراغيد كاملة
-
-**المجانية** (دون أي تَسجيل):
-- إنقاذ فوري ٣٠ث/٩٠ث/٧د
-- ندى — حتى ٣٠ رسالة يومياً
-- كتابة غير محدودة
-- بروتوكولات وأدوات
-- ٣ رسائل من المستقبل
-- تقرير أسبوعي واحد كل ٧ أيام
-- الحديقة والأرشيف
-
-**أراغيد كاملة** (٢٠ ر.س/شهر):
-- ندى بدون حدود
-- رسائل غير محدودة
-- إعادة الضبط الشهري
-- تَصدير PNG لكل الجلسات
-- رؤى موسمية متقدّمة
-- نَسخ احتياطية تلقائية
-- ميزات قادمة جميعها
+**ARAGID** answers all three: Arabic as the design language rather than a translation target, `localStorage` as the only database, and a tiered **Rescue Hub** (30s / 90s / 7min) that meets the user at the intensity they're actually in.
 
 ---
 
-## بنية المشروع
+## Key features
+
+| Feature | What it does |
+|---|---|
+| **Rescue Hub** | Three escalating protocols — 30s, 90s, 7min — chosen by how much capacity the user has right now |
+| **Mood system** | 8 emotional states logged *before and after* each session, so impact is measured rather than assumed |
+| **Insights engine** | Detects 6 behavioural patterns: night-owl usage, recurring themes, improvement, momentum, decline, first-week |
+| **EMDR** | Bilateral visual stimulation for self-guided grounding |
+| **ندى (Nada)** | A context-aware companion that reads message tone and responds to the user's actual state |
+| **Crisis detection** | Recognises high-risk language and surfaces Saudi Arabia's national mental-health line (٩٢٠٠٣٣٣٦٠) |
+| **Guided writing** | 13 CBT-derived prompts, plus a Focus Mode that hides all chrome while writing |
+| **Garden** | 7 growth milestones (1/3/7/14/21/50/100) that make consistency visible |
+| **Letters to the future** | Write to a future self; delivered on a chosen date |
+| **Weekly report** | Statistics + narrative + a shareable card |
+| **Share cards** | Canvas-generated 1080×1920 PNG export |
+| **Offline-first** | Full service-worker precache — every route works with no network |
+
+**Free tier** (no signup): full Rescue Hub, unlimited writing, protocols, the Garden and Archive, 30 Nada messages/day, 3 letters, 1 weekly report per 7 days.
+**ARAGID Full** (٢٩ ر.س/month · ٢٤٠ /year · ٧٤٩ lifetime): unlimited Nada and letters, the Monthly Reset ritual, PNG export for all sessions, advanced seasonal insights.
+
+---
+
+## Tech stack
+
+Deliberately dependency-light — the entire app is served as static files.
+
+- **HTML5** + **CSS3** with custom properties (a 5-layer token → component → screen → feature → premium cascade)
+- **Vanilla ES Modules** — native `import`/`export`, **no bundler, no framework, no build step**
+- **Service Worker** — cache-first for assets, network-first for HTML; full offline support
+- **`localStorage`** with a hand-rolled schema-migration system
+- **Canvas API** for PNG share-card generation
+- **Web Share API** for native share sheets
+- **Chart.js** (via CDN) — the single runtime dependency
+
+Roughly **10,000 lines** across 19 JS modules and 5 CSS layers, with 13 client-side routes.
+
+---
+
+## Run locally
+
+No install, no build. Any static file server works — but it **must be served over HTTP**, not opened as a `file://` URL, because ES modules and the service worker both require an origin.
+
+```bash
+git clone https://github.com/raghadateeqq-lgtm/aragid-final.git
+cd aragid-final
+
+# Python
+python -m http.server 5700
+
+# …or Node
+npx serve . -l 5700
+```
+
+Then open **http://localhost:5700**
+
+To verify the offline layer: DevTools → Application → Service Workers. You should see cache `aragid-v2.0.1`. Tick *Offline* and reload — every route still resolves.
+
+---
+
+## Project structure
 
 ```
-aragid/
-├── index.html              # نقطة الدخول
-├── manifest.json           # PWA
-├── sw.js                   # Service Worker (يَدعَم Offline كامل)
-├── README.md               # هذا الملف
+aragid-final/
+├── index.html              # Entry point — app shell
+├── manifest.json           # PWA manifest
+├── sw.js                   # Service worker (precaches all 19 modules)
+├── ROADMAP.md              # Where this is going next
 ├── css/
-│   ├── 01-tokens.css       # متغيرات التصميم
-│   ├── 02-components.css   # مكوّنات أساسية
-│   ├── 03-screens.css      # شاشات أساسية
-│   ├── 04-features.css     # ميزات v1
-│   └── 05-premium.css      # ميزات v2 الجديدة (NEW)
+│   ├── 01-tokens.css       # Design tokens — colour, type, spacing
+│   ├── 02-components.css   # Reusable components
+│   ├── 03-screens.css      # Screen layouts
+│   ├── 04-features.css     # Feature-specific styles
+│   └── 05-premium.css      # Premium-tier styles
 ├── js/
-│   ├── app.js              # Bootstrap + Router
-│   ├── core.js             # DB + Helpers + Migrations + Quotas
-│   ├── svg-defs.js         # أيقونات SVG
-│   ├── data-wisdom.js      # ٢٥+ حكمة عربية
-│   ├── data-protocols.js   # ٨ بروتوكولات إنقاذ
-│   ├── data-patterns.js    # ١٣ نمط CBT
-│   ├── mood-system.js      # 🆕 نظام Mood الكامل
-│   ├── insights-engine.js  # 🆕 محرّك الرؤى
-│   ├── share-card.js       # 🆕 مولّد PNG للمشاركة
-│   ├── views-home.js       # رئيسية v2 ذكية
-│   ├── views-nada.js       # ندى v2 + كشف أزمات
-│   ├── views-write.js      # كتابة v2 + Focus Mode
-│   ├── views-garden.js     # حديقة v2 + Milestones
-│   ├── views-emdr.js       # EMDR تأرجح بصري
-│   ├── views-letters.js    # رسائل من المستقبل + paywall
-│   ├── views-insights.js   # 🆕 لوحة الرؤى الكاملة
-│   ├── views-rescue.js     # 🆕 Rescue Hub
-│   ├── views-pricing.js    # 🆕 Pricing + Paywall
-│   └── views-other.js      # Protocols/Archive/Stories/Toolkit/Settings
-└── assets/icons/           # أيقونات PWA
+│   ├── app.js              # Bootstrap + router (13 routes)
+│   ├── core.js             # Storage, migrations, quotas, helpers
+│   ├── svg-defs.js         # Inline SVG icon sprite
+│   ├── data-wisdom.js      # 25+ original Arabic reflections
+│   ├── data-protocols.js   # 8 rescue protocols
+│   ├── data-patterns.js    # 13 CBT writing patterns
+│   ├── mood-system.js      # 8-state mood tracking
+│   ├── insights-engine.js  # 6-pattern detection
+│   ├── share-card.js       # Canvas → PNG export
+│   └── views-*.js          # 10 view modules (home, nada, write,
+│                           #   garden, emdr, letters, insights,
+│                           #   rescue, pricing, other)
+└── assets/icons/           # PWA icons (192px, 512px)
 ```
 
 ---
 
-## التشغيل المحلّي
+## Privacy
 
-```bash
-cd aragid
-python3 -m http.server 8000
-# أو
-npx serve .
-```
-ثم افتحي: `http://localhost:8000`
+This is the architectural centre of the project, not a footnote.
 
-## النشر — Netlify (الأسرع)
-
-1. اذهبي إلى [app.netlify.com/drop](https://app.netlify.com/drop)
-2. اسحبي مُجلَّد `aragid/` كاملاً
-3. ✓ تَمّ — رابطكِ جاهز خلال ثوانٍ
-
-## النشر — Vercel
-
-```bash
-npx vercel --prod
-```
+- **All data is local.** `localStorage` on the user's device, and nowhere else.
+- **No servers.** There is no backend to compromise. The app is static files.
+- **No analytics, no tracking, no ads.** No third-party scripts beyond Chart.js.
+- **No account, no signup.** Nothing to identify the user with.
+- **Export/import as JSON** — the user owns their data and can take it out.
 
 ---
 
-## الخصوصية
+## What I learned
 
-- **كل البيانات محلية** — على جهاز المستخدمة فقط
-- **لا خوادم، لا تَحليلات، لا إعلانات**
-- **localStorage فقط** — تَصدير/استيراد JSON
-- **بدون تَسجيل** — اشتراك مدمج بدون حساب (Demo Mode للتجربة)
-
----
-
-## التقنيات
-
-- HTML5 + CSS3 (Custom Properties)
-- ES Modules (native, بدون bundler)
-- Chart.js (CDN) للرسوم البيانية
-- Canvas API لتَوليد PNG
-- Web Share API للمشاركة
-- Service Worker للعمل Offline
-- localStorage مع Migrations
+- **Right-to-left is an architecture decision, not a stylesheet flag.** Setting `dir="rtl"` is the last 5% of the work. Icon direction, animation origin, chart axes, gradient angles, swipe affordances, and the reading order of a stat row all carry directionality. Designing Arabic-first and treating LTR as the port — rather than the reverse — produced a fundamentally different and better layout.
+- **Constraints clarify.** Choosing no framework and no build step meant every abstraction had to earn itself. Native ES modules turned out to be sufficient for a 13-route app, and the absence of a bundler made the service worker's precache list trivially auditable — I could read the entire dependency graph in one file.
+- **Offline-first surfaces bugs that online-first hides.** Precaching forces you to enumerate every asset explicitly. That discipline caught a module (`views-insights.js`) that was silently missing from the cache list — it worked perfectly online and would have failed only for offline users, the hardest cohort to get a bug report from.
+- **Measuring is a design feature.** Logging mood *before and after* a session, rather than just once, converts a journal into an instrument. It also creates an obligation: if the numbers say a protocol isn't helping, the protocol has to change.
+- **Writing for someone in crisis is a discipline of subtraction.** Focus Mode began as a feature. It ended as a lesson: in the worst moments, the most valuable thing an interface can do is remove itself.
 
 ---
 
-## أرقام مفتاحية
+## Roadmap
 
-- **١٩** ملف JavaScript
-- **٥** ملفات CSS (~٢٧٠٠ سطر CSS)
-- **١٣٠٠٠+** سطر إجمالي
-- **٢٥+** حكمة عربية أصلية
-- **٨** بروتوكولات إنقاذ مدروسة
-- **١٣** نمط CBT للكتابة
-- **٨** حالات مزاجية
-- **٧** مَحَطّات Garden
-- **٦** أنماط Insights
-- **٣** خطط اشتراك
+Native iOS/Swift, on-device intelligence, deeper accessibility, and a fuller Arabic-first design system. See **[ROADMAP.md](ROADMAP.md)** for detail.
 
 ---
 
-## رقم خط الدعم (السعودية)
+## A note on how this was built
 
-**٩٢٠٠٣٣٣٦٠** — مَدمَج في كل لحظات الأزمة
+This project was developed with **AI assistance**. I used AI tooling to accelerate implementation, explore approaches, and scaffold repetitive work.
+
+Every decision that shaped the product is mine: the problem definition, the Arabic-first premise, the privacy architecture (no backend, no accounts), the three-tier rescue model, the content — all 25+ Arabic reflections, 8 protocols, and 13 writing patterns are original — and the choice to ship with no framework.
+
+I reviewed, tested, restructured, and organised the entire codebase. I treat AI as a capable collaborator whose output requires judgement, verification, and ownership — not as a substitute for understanding my own system.
 
 ---
 
-## الترخيص
+## License & credits
 
-جميع المحتويات (حِكَم، بروتوكولات، نَمط لُغوي) أصلية لـ Aragid.
+All content — reflections, protocols, and linguistic voice — is original to ARAGID.
 
-© 2026 Aragid · صُمِّمَ بحُبٍّ في الرياض.
+**Crisis support (Saudi Arabia): ٩٢٠٠٣٣٣٦٠** — surfaced throughout the app wherever risk language is detected.
+
+© 2026 ARAGID · Designed with care in Riyadh.
