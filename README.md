@@ -1,65 +1,120 @@
-# ARAGID · أراغيد
+# ARAGID
 
-> **A daily emotional-reset companion — for the moments that go unspoken.**
-> نظام إعادة ضبط عاطفي يومي — للحظات لا تُقال.
+Arabic-first emotional wellness platform designed to support daily recovery through guided sessions, journaling, emotional regulation tools and an offline-first Progressive Web App experience.
 
-An Arabic-first, privacy-first mental wellness **Progressive Web App**. No backend, no accounts, no analytics — every entry stays on the user's device.
+<div dir="rtl">
 
----
+**أراغيد** — نظام إعادة ضبط عاطفي يومي، للحظات لا تُقال.
 
-## The problem
-
-Arabic speakers seeking mental wellness tools face three compounding gaps:
-
-1. **Language.** Most wellness apps are English-first. Arabic support, when it exists, is a right-to-left retrofit — translated strings bolted onto a layout that was never designed for them. The result reads as foreign at exactly the moment a user needs it to feel like home.
-2. **Privacy.** Journaling your hardest moments into someone else's cloud is a real deterrent. The most vulnerable entries are the ones least likely to be written if a server is involved.
-3. **The gap between feeling and action.** In an acute moment — a panic spike, a 2 a.m. spiral — a blank journal box is the wrong interface. What helps is a short, structured, timed protocol.
-
-**ARAGID** answers all three: Arabic as the design language rather than a translation target, `localStorage` as the only database, and a tiered **Rescue Hub** (30s / 90s / 7min) that meets the user at the intensity they're actually in.
+</div>
 
 ---
 
-## Key features
+## Highlights
 
-| Feature | What it does |
+- **Arabic-first by design.** Right-to-left is the native layout, not a retrofit. Typography, iconography, motion origin, and reading order were built for Arabic and ported outward — not the reverse.
+- **Privacy as architecture, not policy.** There is no backend. No accounts, no analytics, no telemetry. Every entry lives in the user's browser and nowhere else, which means there is no server to breach.
+- **Offline-first.** A service worker precaches the entire application. Every screen works with no network connection.
+- **Zero build step.** Native ES modules, no bundler, no framework, no transpiler. Clone it and serve it.
+- **Measured, not assumed.** Mood is recorded before *and* after each session, so the effect of a protocol is observed rather than claimed.
+- **Meets acute moments with structure.** A blank text box is the wrong interface during a panic spike. A tiered, timed protocol is the right one.
+
+---
+
+## Features
+
+| Feature | Description |
 |---|---|
-| **Rescue Hub** | Three escalating protocols — 30s, 90s, 7min — chosen by how much capacity the user has right now |
-| **Mood system** | 8 emotional states logged *before and after* each session, so impact is measured rather than assumed |
-| **Insights engine** | Detects 6 behavioural patterns: night-owl usage, recurring themes, improvement, momentum, decline, first-week |
-| **EMDR** | Bilateral visual stimulation for self-guided grounding |
-| **ندى (Nada)** | A context-aware companion that reads message tone and responds to the user's actual state |
-| **Crisis detection** | Recognises high-risk language and surfaces Saudi Arabia's national mental-health line (٩٢٠٠٣٣٣٦٠) |
-| **Guided writing** | 13 CBT-derived prompts, plus a Focus Mode that hides all chrome while writing |
-| **Garden** | 7 growth milestones (1/3/7/14/21/50/100) that make consistency visible |
-| **Letters to the future** | Write to a future self; delivered on a chosen date |
-| **Weekly report** | Statistics + narrative + a shareable card |
+| **Rescue Hub** | Three escalating protocols — 30 seconds, 90 seconds, 7 minutes — selected by the user's current capacity |
+| **Mood system** | Eight emotional states, logged before and after every session to measure real impact |
+| **Insights engine** | Detects six behavioural patterns: night-time usage, recurring themes, improvement, momentum, decline, and first-week onboarding |
+| **EMDR exercise** | Bilateral visual stimulation for self-guided grounding |
+| **Nada (ندى)** | A context-aware companion that reads message tone and responds to the user's present state |
+| **Crisis detection** | Recognises high-risk language and surfaces Saudi Arabia's national mental-health line |
+| **Guided journaling** | Thirteen CBT-derived writing patterns, plus a Focus Mode that hides all interface chrome while writing |
+| **Garden** | Seven growth milestones that make consistency visible over time |
+| **Letters to the future** | Messages written to a future self, delivered on a chosen date |
+| **Weekly report** | Statistics, narrative summary, and a shareable card |
 | **Share cards** | Canvas-generated 1080×1920 PNG export |
-| **Offline-first** | Full service-worker precache — every route works with no network |
-
-**Free tier** (no signup): full Rescue Hub, unlimited writing, protocols, the Garden and Archive, 30 Nada messages/day, 3 letters, 1 weekly report per 7 days.
-**ARAGID Full** (٢٩ ر.س/month · ٢٤٠ /year · ٧٤٩ lifetime): unlimited Nada and letters, the Monthly Reset ritual, PNG export for all sessions, advanced seasonal insights.
+| **Protocol library** | Eight structured rescue protocols and a curated toolkit |
 
 ---
 
-## Tech stack
+## Tech Stack
 
-Deliberately dependency-light — the entire app is served as static files.
+Deliberately dependency-light. The entire application ships as static files.
 
-- **HTML5** + **CSS3** with custom properties (a 5-layer token → component → screen → feature → premium cascade)
-- **Vanilla ES Modules** — native `import`/`export`, **no bundler, no framework, no build step**
-- **Service Worker** — cache-first for assets, network-first for HTML; full offline support
-- **`localStorage`** with a hand-rolled schema-migration system
-- **Canvas API** for PNG share-card generation
-- **Web Share API** for native share sheets
-- **Chart.js** (via CDN) — the single runtime dependency
+| Layer | Technology |
+|---|---|
+| Markup | HTML5, semantic landmarks, `lang="ar"` / `dir="rtl"` |
+| Styling | CSS3 with custom properties, organised as a five-layer cascade |
+| Logic | Vanilla JavaScript, native ES modules — no bundler, no framework |
+| Offline | Service Worker (cache-first assets, network-first HTML) |
+| Persistence | `localStorage` with a schema-migration system |
+| Graphics | Canvas API for share-card generation |
+| Charts | Chart.js via CDN — the sole runtime dependency |
+| Sharing | Web Share API |
 
-Roughly **10,000 lines** across 19 JS modules and 5 CSS layers, with 13 client-side routes.
+Approximately 10,000 lines across 19 JavaScript modules and 5 CSS layers, serving 13 client-side routes.
 
 ---
 
-## Run locally
+## Architecture
 
-No install, no build. Any static file server works — but it **must be served over HTTP**, not opened as a `file://` URL, because ES modules and the service worker both require an origin.
+The application is a client-side single-page app with no server component.
+
+```
+index.html  →  app.js  →  router  →  view module  →  DOM
+                  │
+                  ├── core.js            storage, migrations, quotas, helpers
+                  ├── mood-system.js     mood capture and trend derivation
+                  ├── insights-engine.js pattern detection over local history
+                  └── data-*.js          static content (protocols, patterns, wisdom)
+```
+
+**Four principles shape the structure:**
+
+1. **Content, logic, and presentation are separated.** Static content lives in `data-*.js`, behaviour in `core.js` and the engines, rendering in `views-*.js`. This is what makes a future native port tractable — only the view layer is a genuine rewrite.
+2. **`core.js` is the only module that touches storage.** Every read and write passes through a single `DB` interface, which is where schema migrations are applied.
+3. **Views are pure render functions.** Each `views-*.js` module exports a `render*()` that builds and returns DOM. The router owns mounting; views own nothing global.
+4. **The service worker's precache list is the dependency graph, written down.** With no bundler, the full asset manifest is a readable list in `sw.js` rather than build-tool output.
+
+---
+
+## Project Structure
+
+```
+araghid/
+├── index.html              # Entry point — application shell
+├── manifest.json           # PWA manifest
+├── sw.js                   # Service worker — precaches all 19 modules
+├── README.md
+├── ROADMAP.md
+├── css/
+│   ├── 01-tokens.css       # Design tokens — colour, type, spacing, motion
+│   ├── 02-components.css   # Reusable components
+│   ├── 03-screens.css      # Screen layouts
+│   ├── 04-features.css     # Feature-specific styles
+│   └── 05-premium.css      # Premium-tier styles
+├── js/
+│   ├── app.js              # Bootstrap and router (13 routes)
+│   ├── core.js             # Storage, migrations, quotas, shared helpers
+│   ├── svg-defs.js         # Inline SVG icon sprite
+│   ├── data-wisdom.js      # Original Arabic reflections
+│   ├── data-protocols.js   # Eight rescue protocols
+│   ├── data-patterns.js    # Thirteen CBT writing patterns
+│   ├── mood-system.js      # Eight-state mood tracking
+│   ├── insights-engine.js  # Six-pattern detection
+│   ├── share-card.js       # Canvas to PNG export
+│   └── views-*.js          # Ten view modules
+└── assets/icons/           # PWA icons (192px, 512px)
+```
+
+---
+
+## Getting Started
+
+No installation and no build step. Any static file server works — but the app **must be served over HTTP**, not opened as a `file://` URL, because ES modules and the service worker both require an origin.
 
 ```bash
 git clone https://github.com/raghadateeqq-lgtm/araghid.git
@@ -68,90 +123,79 @@ cd araghid
 # Python
 python -m http.server 5700
 
-# …or Node
+# ...or Node
 npx serve . -l 5700
 ```
 
 Then open **http://localhost:5700**
 
-To verify the offline layer: DevTools → Application → Service Workers. You should see cache `aragid-v2.0.1`. Tick *Offline* and reload — every route still resolves.
+**Live demo:** [raghadateeqq-lgtm.github.io/araghid](https://raghadateeqq-lgtm.github.io/araghid/)
 
 ---
 
-## Project structure
+## Offline Support
 
-```
-araghid/
-├── index.html              # Entry point — app shell
-├── manifest.json           # PWA manifest
-├── sw.js                   # Service worker (precaches all 19 modules)
-├── ROADMAP.md              # Where this is going next
-├── css/
-│   ├── 01-tokens.css       # Design tokens — colour, type, spacing
-│   ├── 02-components.css   # Reusable components
-│   ├── 03-screens.css      # Screen layouts
-│   ├── 04-features.css     # Feature-specific styles
-│   └── 05-premium.css      # Premium-tier styles
-├── js/
-│   ├── app.js              # Bootstrap + router (13 routes)
-│   ├── core.js             # Storage, migrations, quotas, helpers
-│   ├── svg-defs.js         # Inline SVG icon sprite
-│   ├── data-wisdom.js      # 25+ original Arabic reflections
-│   ├── data-protocols.js   # 8 rescue protocols
-│   ├── data-patterns.js    # 13 CBT writing patterns
-│   ├── mood-system.js      # 8-state mood tracking
-│   ├── insights-engine.js  # 6-pattern detection
-│   ├── share-card.js       # Canvas → PNG export
-│   └── views-*.js          # 10 view modules (home, nada, write,
-│                           #   garden, emdr, letters, insights,
-│                           #   rescue, pricing, other)
-└── assets/icons/           # PWA icons (192px, 512px)
-```
+The application is fully functional without a network connection.
+
+- **Precache on install.** The service worker caches the app shell, all 19 JavaScript modules, all 5 stylesheets, the manifest, and both icons.
+- **Cache-first for assets.** Static resources resolve from cache immediately, then fall back to the network.
+- **Network-first for HTML.** The document is fetched fresh when online and served from cache when offline, so updates propagate without stranding offline users.
+- **Versioned cache with cleanup.** Each release names a new cache; the `activate` handler deletes every stale cache before claiming clients.
+- **Graceful degradation.** Cache failures are caught per-asset rather than failing the whole install, so a single unreachable resource cannot break registration.
+- **Local persistence.** Because all data is in `localStorage`, there is nothing to sync and no offline write queue to reconcile.
+
+To verify: open DevTools → Application → Service Workers, enable *Offline*, and reload. Every route resolves.
+
+---
+
+## Accessibility
+
+**Implemented today:**
+
+- Semantic landmarks — `<header>`, `<nav>`, `<main>`, `<section>` — with native `<button>` elements for all interactive controls
+- `lang="ar"` and `dir="rtl"` declared at the document root and mirrored in the manifest
+- `prefers-reduced-motion: reduce` honoured, disabling non-essential animation
+- ARIA labelling on icon-only controls and dynamic regions
+- Colour and type scales defined as tokens, enabling systematic contrast work
+
+**Known gaps, stated honestly:**
+
+Accessibility is the area of this project with the most remaining work, and it is the highest priority on the roadmap. Screen-reader behaviour has not been tested with Arabic voices; full keyboard navigation is incomplete; WCAG 2.2 AA contrast has not been formally audited; and the EMDR exercise has no non-visual equivalent, which makes it unusable without sight. A wellness tool that excludes disabled users has misunderstood its own purpose. See [ROADMAP.md](ROADMAP.md) for the plan.
 
 ---
 
 ## Privacy
 
-This is the architectural centre of the project, not a footnote.
-
 - **All data is local.** `localStorage` on the user's device, and nowhere else.
-- **No servers.** There is no backend to compromise. The app is static files.
-- **No analytics, no tracking, no ads.** No third-party scripts beyond Chart.js.
-- **No account, no signup.** Nothing to identify the user with.
-- **Export/import as JSON** — the user owns their data and can take it out.
-
----
-
-## What I learned
-
-- **Right-to-left is an architecture decision, not a stylesheet flag.** Setting `dir="rtl"` is the last 5% of the work. Icon direction, animation origin, chart axes, gradient angles, swipe affordances, and the reading order of a stat row all carry directionality. Designing Arabic-first and treating LTR as the port — rather than the reverse — produced a fundamentally different and better layout.
-- **Constraints clarify.** Choosing no framework and no build step meant every abstraction had to earn itself. Native ES modules turned out to be sufficient for a 13-route app, and the absence of a bundler made the service worker's precache list trivially auditable — I could read the entire dependency graph in one file.
-- **Offline-first surfaces bugs that online-first hides.** Precaching forces you to enumerate every asset explicitly. That discipline caught a module (`views-insights.js`) that was silently missing from the cache list — it worked perfectly online and would have failed only for offline users, the hardest cohort to get a bug report from.
-- **Measuring is a design feature.** Logging mood *before and after* a session, rather than just once, converts a journal into an instrument. It also creates an obligation: if the numbers say a protocol isn't helping, the protocol has to change.
-- **Writing for someone in crisis is a discipline of subtraction.** Focus Mode began as a feature. It ended as a lesson: in the worst moments, the most valuable thing an interface can do is remove itself.
+- **No backend.** The application is static files; there is no server to compromise.
+- **No analytics, no tracking, no advertising.** No third-party scripts beyond Chart.js.
+- **No account, no signup.** Nothing exists to identify a user with.
+- **Export and import as JSON.** Users own their data and can take it with them.
 
 ---
 
 ## Roadmap
 
-Native iOS/Swift, on-device intelligence, deeper accessibility, and a fuller Arabic-first design system. See **[ROADMAP.md](ROADMAP.md)** for detail.
+Native iOS and the wider Apple ecosystem, on-device intelligence, encrypted local storage, deeper mood insights, comprehensive accessibility, and a fuller Arabic-first design system.
+
+See **[ROADMAP.md](ROADMAP.md)** for the detailed plan and an honest account of the project's current limitations.
 
 ---
 
-## A note on how this was built
+## Development Note
 
-This project was developed with **AI assistance**. I used AI tooling to accelerate implementation, explore approaches, and scaffold repetitive work.
+This project was developed with AI assistance. AI tooling was used to accelerate implementation, explore approaches, and scaffold repetitive work.
 
-Every decision that shaped the product is mine: the problem definition, the Arabic-first premise, the privacy architecture (no backend, no accounts), the three-tier rescue model, the content — all 25+ Arabic reflections, 8 protocols, and 13 writing patterns are original — and the choice to ship with no framework.
+Every decision that shaped the product is my own: the problem definition, the Arabic-first premise, the privacy architecture, the tiered rescue model, the original content, and the choice to ship without a framework. I reviewed, tested, restructured, and organised the entire codebase.
 
-I reviewed, tested, restructured, and organised the entire codebase. I treat AI as a capable collaborator whose output requires judgement, verification, and ownership — not as a substitute for understanding my own system.
+I treat AI as a capable collaborator whose output requires judgement, verification, and ownership — not as a substitute for understanding my own system.
 
 ---
 
-## License & credits
+## License
 
 All content — reflections, protocols, and linguistic voice — is original to ARAGID.
 
-**Crisis support (Saudi Arabia): ٩٢٠٠٣٣٣٦٠** — surfaced throughout the app wherever risk language is detected.
+**ARAGID is not a clinical tool** and is not a substitute for professional care. Crisis support for Saudi Arabia is surfaced in-app wherever risk language is detected.
 
 © 2026 ARAGID · Designed with care in Riyadh.
