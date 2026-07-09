@@ -441,6 +441,4 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModal();
   setupRescue();
   setupInstallPrompt();
-
-  console.log('✦ أراغيد ٢.٠ جاهزة ✦');
 });
