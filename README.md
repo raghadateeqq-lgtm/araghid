@@ -62,8 +62,8 @@ Roughly **10,000 lines** across 19 JS modules and 5 CSS layers, with 13 client-s
 No install, no build. Any static file server works — but it **must be served over HTTP**, not opened as a `file://` URL, because ES modules and the service worker both require an origin.
 
 ```bash
-git clone https://github.com/raghadateeqq-lgtm/aragid-final.git
-cd aragid-final
+git clone https://github.com/raghadateeqq-lgtm/araghid.git
+cd araghid
 
 # Python
 python -m http.server 5700
@@ -81,7 +81,7 @@ To verify the offline layer: DevTools → Application → Service Workers. You s
 ## Project structure
 
 ```
-aragid-final/
+araghid/
 ├── index.html              # Entry point — app shell
 ├── manifest.json           # PWA manifest
 ├── sw.js                   # Service worker (precaches all 19 modules)
